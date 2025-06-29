@@ -41,6 +41,7 @@ public class selenideRepository {
         $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
         $("#wiki-pages-filter").setValue("SoftAssertions").pressEnter();
         $("#wiki-pages-box").$(byText("SoftAssertions")).click();
+        //проверка
         $("#wiki-body").shouldHave(text("JUnit5"));
 
     }
