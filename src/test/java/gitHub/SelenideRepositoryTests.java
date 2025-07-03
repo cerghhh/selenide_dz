@@ -1,21 +1,18 @@
 package gitHub;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.Keys;
+import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.matchText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class selenideRepository {
+public class SelenideRepositoryTests {
 
 
     @Test
-    void shouldFindSelenideRepositoryAtTheTop() {
+    void shouldFindSelenideRepositoryWikiTest() {
         String JUnit5 = """
                 @ExtendWith({SoftAssertsExtension.class})
                 class Tests {
@@ -29,7 +26,7 @@ public class selenideRepository {
                   }
                 }
                 """;
-        Configuration.holdBrowserOpen = true;
+
         //открыть репозиторий
         open("https://github.com/");
         actions().sendKeys("s").perform();
@@ -42,7 +39,8 @@ public class selenideRepository {
         $("#wiki-pages-filter").setValue("SoftAssertions").pressEnter();
         $("#wiki-pages-box").$(byText("SoftAssertions")).click();
         //проверка
-        $("#wiki-body").shouldHave(text("JUnit5"));
+        $("#repo-content-pjax-container").shouldHave(text(JUnit5));
+        $(".markdown-body").shouldHave(text("3. Using JUnit5 extend test class:"));
 
     }
 }
