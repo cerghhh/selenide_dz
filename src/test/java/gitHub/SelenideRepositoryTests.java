@@ -39,8 +39,8 @@ public class SelenideRepositoryTests {
         $("#wiki-pages-filter").setValue("SoftAssertions").pressEnter();
         $("#wiki-pages-box").$(byText("SoftAssertions")).click();
         //проверка
-        $("#repo-content-pjax-container").shouldHave(text(JUnit5));
         $(".markdown-body").shouldHave(text("3. Using JUnit5 extend test class:"));
+        $("#repo-content-pjax-container").shouldHave(text(JUnit5));
 
     }
 }
